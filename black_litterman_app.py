@@ -113,10 +113,7 @@ def neg_sharpe_penalizado(w, mu, cov):
 
 # ---------- Data loading ----------
 def load_data_from_excel(file_obj_or_path):
-    if isinstance(file_obj_or_path, (str, os.PathLike)):
-        df = pd.read_excel(file_obj_or_path, index_col=0, parse_dates=True)
-    else:
-        df = pd.read_excel(file_obj_or_path, index_col=0, parse_dates=True)
+    df = pd.read_excel(file_obj_or_path, index_col=0, parse_dates=True)
 
     df = df.sort_index(ascending=True)
     df = df.rename(columns=ORIGINAL_TO_RENAMED)
@@ -316,8 +313,6 @@ if run_btn:
         # --- PASO 1: CARGA DE DATOS ---
         if uploaded is not None:
             data, returns, returns_modelos = load_data_from_excel(uploaded)
-        elif use_default and os.path.exists(default_path):
-            data, returns, returns_modelos = load_data_from_excel(default_path)
         else:
             st.error("Please upload an Excel file or provide a valid absolute path.")
             st.stop()
