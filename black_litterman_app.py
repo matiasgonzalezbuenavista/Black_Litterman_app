@@ -259,11 +259,6 @@ st.title("Black-Litterman and Portfolio Optimization")
 # Sidebar: data input
 st.sidebar.header("Data Input")
 uploaded = st.sidebar.file_uploader("Upload Excel with price index series", type=["xlsx"])
-default_path = st.sidebar.text_input(
-    "Or use absolute path to Excel",
-    value="/Users/matiasgonzalez/Desktop/Backtesting/bbdd seleccion portafolio.xlsx"
-)
-use_default = st.sidebar.checkbox("Use default path if no file uploaded", value=True)
 
 # (Asegúrate de tener tus constantes MODEL_ASSETS, DEFAULT_PRIORS, etc., definidas antes)
 st.subheader("Priors, Views, and Confidences")
@@ -282,7 +277,6 @@ for col in cols_to_format:
     param_df_display[col] = param_df_display[col] * 100
 
 # --- PASO 2: Usar el DataFrame de visualización en el data_editor y ajustar el formato ---
-# El formato "%.2f%%" muestra 2 decimales y el símbolo "%"
 edited_params_display = st.data_editor(
     param_df_display,
     num_rows="fixed",
